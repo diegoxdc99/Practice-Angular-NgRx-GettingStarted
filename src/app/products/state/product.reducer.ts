@@ -16,7 +16,5 @@ const featureReducer = createReducer(
 );
 
 export function reducer(state: ProductState, action: Action) {
-  console.log('existing state: ', state);
-  console.log('payload :>> ', action);
   return featureReducer(state, action);
 }
