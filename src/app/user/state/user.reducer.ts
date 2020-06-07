@@ -12,7 +12,7 @@ const initialState: UserState = {
 
 const featureReducer = createReducer(
   initialState,
-  on(MaskUserName, (state: UserState) => ({ ...state, maskUserName: !state.maskUserName })),
+  on(MaskUserName, (state: UserState): UserState => ({ ...state, maskUserName: !state.maskUserName })),
 );
 
 export function reducer(state: UserState, action: Action) {
