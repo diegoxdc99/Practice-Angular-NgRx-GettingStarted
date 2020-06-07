@@ -35,3 +35,9 @@ Notas:
 - Ngrx-store-freeze: Obliga a que no se pueda modificar el estado desde cualquier parte del codigo
 - Los reducers modifican el estado y deben ser inmutables por lo tanto deben devolver una nueva copia
 - Las acciones reportan al store que se debe cambiar algo, tienen un tipo y pueden tener una carga variable para guardar en el store
+
+
+
+Retos:
+  1. Implementar el funcionamiento del MaskUsername en el store
+  **Completado**
