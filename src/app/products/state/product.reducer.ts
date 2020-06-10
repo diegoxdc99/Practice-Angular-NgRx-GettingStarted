@@ -1,5 +1,5 @@
 import { createReducer, Action, on } from '@ngrx/store';
-import { ToggleProductCode, ProductActionTypes } from './product.actions';
+import { ToggleProductCode, SetCurrentProduct, InitializeCurrentProduct, ClearCurrentProduct } from './product.actions';
 import { Product } from '../product';
 import * as fromRoot from 'src/app/state/app.state';
 
@@ -19,10 +19,21 @@ const initialState: ProductState = {
   products: []
 };
 
-
 const featureReducer = createReducer(
   initialState,
-  on(ToggleProductCode, (state, { showProductCode } ): ProductState => ({ ...state, showProductCode })),
+  on(ToggleProductCode, (state, { showProductCode }) => ({ ...state, showProductCode })),
+  on(SetCurrentProduct, (state, product) => ({ ...state, currentProduct: { ...product } })),
+  on(ClearCurrentProduct, (state): ProductState => ({ ...state, currentProduct: null })),
+  on(InitializeCurrentProduct, (state): ProductState => ({
+    ...state,
+    currentProduct: {
+      id: 0,
+      productName: '',
+      productCode: 'New',
+      description: '',
+      starRating: 0
+    }
+  })),
 );
 
 export function reducer(state: ProductState, action: Action) {
