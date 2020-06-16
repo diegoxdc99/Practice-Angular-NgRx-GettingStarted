@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.pipe(
       select(getMaskUserName),
-      tap(data => console.log('data :>> ', data)),
       takeWhile(() => this.componentActive)
     ).subscribe(
       maskUserName => this.maskUserName = maskUserName

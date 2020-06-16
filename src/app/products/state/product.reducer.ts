@@ -1,5 +1,5 @@
 import { createReducer, Action, on } from '@ngrx/store';
-import { ToggleProductCode, SetCurrentProduct, InitializeCurrentProduct, ClearCurrentProduct } from './product.actions';
+import * as fromActions from './product.actions';
 import { Product } from '../product';
 import * as fromRoot from 'src/app/state/app.state';
 
@@ -21,10 +21,10 @@ const initialState: ProductState = {
 
 const featureReducer = createReducer(
   initialState,
-  on(ToggleProductCode, (state, { showProductCode }) => ({ ...state, showProductCode })),
-  on(SetCurrentProduct, (state, product) => ({ ...state, currentProduct: { ...product } })),
-  on(ClearCurrentProduct, (state): ProductState => ({ ...state, currentProduct: null })),
-  on(InitializeCurrentProduct, (state): ProductState => ({
+  on(fromActions.ToggleProductCode, (state, { showProductCode }) => ({ ...state, showProductCode })),
+  on(fromActions.SetCurrentProduct, (state, product) => ({ ...state, currentProduct: { ...product } })),
+  on(fromActions.ClearCurrentProduct, (state): ProductState => ({ ...state, currentProduct: null })),
+  on(fromActions.InitializeCurrentProduct, (state): ProductState => ({
     ...state,
     currentProduct: {
       id: 0,
@@ -34,6 +34,7 @@ const featureReducer = createReducer(
       starRating: 0
     }
   })),
+  on(fromActions.loadSuccess, (state, { payload }) => ({ ...state, products: payload }))
 );
 
 export function reducer(state: ProductState, action: Action) {

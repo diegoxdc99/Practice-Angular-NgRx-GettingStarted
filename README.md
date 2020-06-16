@@ -37,9 +37,25 @@ Notas:
 - Los selectores se puede componer de otros selectores, esto se hace con el fin de abstraer el funcionamiento: por ejemplo si se tiene una lista de productos y un id, se pueden usar esos dos selectors, así si en algún momento cambia la estructura dónde se encuentra el id del producto seleccionado no habría que cambiar la lógica en ninguna otra parte
 - Los selector sirven para abstraer la estructura de los datos, si en algún momento cambia la estructura del store solo se necesita cambiar ese selector.
 
+
+Operadores ngrx
+- **switchMap:** Cancela la subscripcion/peticion actual y puede causar race condition.
+Se usa para peticoones get o cancelar peticiones como busquedas.
+- **concatMap:** Corre las subscripciones/peticiones en orden y tiene menos rendimiento.
+Se usa para las peticiones: GET, POST, PUT en el cual el orden es importante.
+
+- **mergeMap:** Corre las subscripciones/peticiones en paralelo.
+Se usa para peticiones tipo: PUT, POST, DELETE cuando el orden no importa
+
+- **exhaustMap:** Ignora todas las peticiones siguientes hasta que se complete la actual.
+Se usa para login cuando no se quieren mas peticiones hasta que la original se complete.
+
 Retos:
   1. Implementar el funcionamiento del MaskUsername en el store
   **Completado**
 
   2. Implementar tipado en el state de los usarios.
+  **Completado**
+
+  3. Crear acciones, tipar el reducer y usarlos en la lógica para el valor MaskUserName en el módulo de user
   **Completado**
