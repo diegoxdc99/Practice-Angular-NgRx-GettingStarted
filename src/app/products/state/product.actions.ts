@@ -39,6 +39,6 @@ export const loadSuccess = createAction(
 );
 
 export const loadFailure = createAction(
-  ProductActionTypes.load,
+  ProductActionTypes.loadFail,
   props<{payload: string}>()
 );

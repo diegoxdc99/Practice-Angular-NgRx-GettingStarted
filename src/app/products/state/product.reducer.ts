@@ -11,12 +11,14 @@ export interface ProductState {
   showProductCode: boolean;
   currentProduct: Product;
   products: Product[];
+  error: string;
 }
 
 const initialState: ProductState = {
   showProductCode: true,
   currentProduct: null,
-  products: []
+  products: [],
+  error: ''
 };
 
 const featureReducer = createReducer(
@@ -34,7 +36,8 @@ const featureReducer = createReducer(
       starRating: 0
     }
   })),
-  on(fromActions.loadSuccess, (state, { payload }) => ({ ...state, products: payload }))
+  on(fromActions.loadSuccess, (state, { payload }) => ({ ...state, products: payload, error: '' })),
+  on(fromActions.loadFailure, (state, { payload }) => ({ ...state, products: [], error: payload }))
 );
 
 export function reducer(state: ProductState, action: Action) {

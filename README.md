@@ -50,6 +50,8 @@ Se usa para peticiones tipo: PUT, POST, DELETE cuando el orden no importa
 - **exhaustMap:** Ignora todas las peticiones siguientes hasta que se complete la actual.
 Se usa para login cuando no se quieren mas peticiones hasta que la original se complete.
 
+- **takeWhile:** Operador que tiene una funcion de predicado para saber hasta que momento se debe de desubscribir
+
 Retos:
   1. Implementar el funcionamiento del MaskUsername en el store
   **Completado**
@@ -58,4 +60,7 @@ Retos:
   **Completado**
 
   3. Crear acciones, tipar el reducer y usarlos en la lógica para el valor MaskUserName en el módulo de user
+  **Completado**
+
+  4. Implementar el takeWhile a los subscriptores del store para usar la variable componentActive y desuscribirse.
   **Completado**
